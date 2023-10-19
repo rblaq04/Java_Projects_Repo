@@ -1,3 +1,7 @@
+// Dónal Reynolds - 23378344
+
+
+
 public class grp4_Assignment1 {
     public static void main(String[] args) {
         long midMins = (System.currentTimeMillis() % (24*60*60*1000) / 1000) / 60; // Minutes since midnight last night
