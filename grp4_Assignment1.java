@@ -8,7 +8,7 @@ public class grp4_Assignment1 {
         
         String msg, poster; // Defining variables for the content of the message and the poster
         poster = System.getProperty("user.name");
-        msg = "Cats are banned from this WhatsApp group \uD83D\uDEAB \uD83D\uDE3C";
+        msg = "Cats are banned from this WhatsApp group";
         
         System.out.println("Posted by: " + poster);
         System.out.println(msg);
@@ -21,4 +21,11 @@ Posted by: francis
 Hey there!  Just wanted to let you know that we're meeting up at the park tomorrow at 3 PM.
 Don't forget to bring your soccer ball! It's going to be a fun game. See you then!
 Posted at: 19:31:46
+*/
+
+/* 
+We also tested the output at different times on different machines to demonstrate the results remain valid
+Posted by: rayan
+Cats are banned from this WhatsApp group
+Posted at: 22:13:00
 */
