@@ -15,3 +15,10 @@ public class grp4_Assignment1 {
         System.out.printf("Posted at: %02d:%02d:%02d%n%n", (curHour+1), curMin, curSec); // Time output with formatting to add zero if needed
     }
 }
+/*
+When we changed the value of the "msg" variable we got the same results as seen below
+Posted by: francis
+Hey there!  Just wanted to let you know that we're meeting up at the park tomorrow at 3 PM.
+Don't forget to bring your soccer ball! It's going to be a fun game. See you then!
+Posted at: 19:31:46
+*/
