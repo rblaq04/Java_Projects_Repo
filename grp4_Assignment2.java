@@ -6,7 +6,7 @@
 
 public class grp4_Assignment1 {
     public static void main(String[] args) {
-        long dayOfWeek, midMins, midSecs, curHour, curMin, curSec;
+        long dayOfWeek,midMins, midSecs, curHour, curMin, curSec;
         dayOfWeek = (System.currentTimeMillis() / (24*60*60*1000)) % 7;
         midMins = (System.currentTimeMillis() % (24*60*60*1000) / 1000) / 60; // Minutes since midnight last night
         midSecs = (System.currentTimeMillis() % (24*60*60*1000) / 1000); // Seconds since midnight last night
@@ -14,22 +14,64 @@ public class grp4_Assignment1 {
         curMin = (midMins)-(curHour*60); // Minutes since last hour
         curSec = (midSecs)-((curHour*60*60)+(curMin*60)); // Seconds since last minute
         
-        String msg, poster, dayOfWeek; // Defining variables for the content of the message and the poster
-        Boolean daylightSavings;
+        String msg, poster, curDayName, msgDayName, dayNameDisplay; // Defining variables for the content of the message and the poster
+        int msgDayNum;
+        Boolean daylightSavings, overSevenDays;
+        overSevenDays = true;
+        msgDayName = "Sunday";
+        if (msgDayName == "Thursday") {
+            msgDayNum = 0;
+        }
+        else if (msgDayName == "Friday") {
+            msgDayNum = 1;
+        }
+        else if (msgDayName == "Saturday") {
+            msgDayNum = 2;
+        }
+        else if (msgDayName == "Sunday") {
+            msgDayNum = 3;
+        }
+        else if (msgDayName == "Monday") {
+            msgDayNum = 4;
+        }
+        else if (msgDayName == "Tuesday") {
+            msgDayNum = 5;
+        }
+        else {
+            msgDayNum = 6;
+        }
+            
+        if (overSevenDays) {
+            dayNameDisplay = "                   Some time ago...                   ";
+        }
+        else {
+            dayNameDisplay = "";
+            if ((dayOfWeek - msgDayNum) == 1) {
+                dayNameDisplay = "Yesterday";
+            }
+            if ((dayOfWeek - msgDayNum) > 1) {
+                dayNameDisplay = msgDayName;
+            }
+        }
+        daylightSavings = false;
         poster = System.getProperty("user.name");
         msg = "Cats are banned from this WhatsApp group";
+        
+        // Series of if/else statements to output the day of the week
+        if (dayOfWeek == 0) {curDayName = "Thursday";}
+        else if (dayOfWeek == 1) {curDayName = "Friday";}
+        else if (dayOfWeek == 2) {curDayName = "Saturday";}
+        else if (dayOfWeek == 3) {curDayName = "Sunday";}
+        else if (dayOfWeek == 4) {curDayName = "Monday";}
+        else if (dayOfWeek == 5) {curDayName = "Tuesday";}
+        else {curDayName = "Wednesday";}
+        
+        
+        if (daylightSavings) {curHour += 1;} // Adding hour if daylight savings is in effects
         
         System.out.println("Posted by: " + poster);
         System.out.println(msg);
         System.out.printf("Posted at: %02d:%02d:%02d%n%n", (curHour+1), curMin, curSec); // Time output with formatting to add zero if needed
 
-        // Series of if/else statements to output the day of the week
-        if (dayOfWeek == 0) {out.println("It's Thursday");}
-        else if (dayOfWeek == 1) {out.println("It's Friday");}
-        else if (dayOfWeek == 2) {out.println("It's Saturday");}
-        else if (dayOfWeek == 3) {out.println("It's Sunday");}
-        else if (dayOfWeek == 4) {out.println("It's Monday");}
-        else if (dayOfWeek == 5) {out.println("It's Tuesday");}
-        else {out.println("Unless I've made a terrible oversight, it's Wednesday");} // I would never make an oversight so this statement is irrelevant
     }
 }
