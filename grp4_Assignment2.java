@@ -18,7 +18,7 @@ public class grp4_Assignment1 {
         int msgDayNum, trailSpaceCount;
         Boolean daylightSavings, overSevenDays;
         overSevenDays = false;
-        msgDayName = "Monday";
+        msgDayName = "Tuesday";
         // Assigning numbers to the days of the week for later usage
         if (msgDayName == "Thursday") {
             msgDayNum = 0;
@@ -66,7 +66,7 @@ public class grp4_Assignment1 {
         
         daylightSavings = false;
         poster = System.getProperty("user.name");
-        msg = "Cats are banned from this WhatsApp group";
+        msg = "Cats are banned";
         
         // Series of if/else statements to output the day of the week
         if (dayOfWeek == 0) {curDayName = "Thursday";}
@@ -82,16 +82,14 @@ public class grp4_Assignment1 {
         
         System.out.println("Posted by: " + poster);
         System.out.println(dayNameDisplay);
-        System.out.println(msg);
-        System.out.printf("Posted at: %02d:%02d:%02d%n%n", (curHour+1), curMin, curSec); // Time output with formatting to add zero if needed
-
         if (msg.length() < 40) {
             // Right-align the message
-            System.out.printf("%125s%n", msg);
+            System.out.printf("%115s%n", msg);
         } else {
             // Left-align the message
             System.out.println(msg);
         }
+        System.out.printf("Posted at: %02d:%02d:%02d%n%n", (curHour+1), curMin, curSec); // Time output with formatting to add zero if needed
 
     }
 }
