@@ -4,7 +4,7 @@
 // Philip Roche - 23379707
 
 
-public class grp4_Assignment1 {
+public class grp4_Assignment2 {
     public static void main(String[] args) {
         long dayOfWeek,midMins, midSecs, curHour, curMin, curSec;
         dayOfWeek = (System.currentTimeMillis() / (24*60*60*1000)) % 7;
