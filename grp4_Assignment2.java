@@ -84,7 +84,14 @@ public class grp4_Assignment1 {
         System.out.println(dayNameDisplay);
         System.out.println(msg);
         System.out.printf("Posted at: %02d:%02d:%02d%n%n", (curHour+1), curMin, curSec); // Time output with formatting to add zero if needed
-        
+
+        if (msg.length() < 40) {
+            // Right-align the message
+            System.out.printf("%125s%n", msg);
+        } else {
+            // Left-align the message
+            System.out.println(msg);
+        }
 
     }
 }
