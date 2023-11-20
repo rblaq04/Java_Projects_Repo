@@ -14,7 +14,7 @@ public class grp4_Assignment2 {
         curMin = (midMins)-(curHour*60); // Minutes since last hour
         curSec = (midSecs)-((curHour*60*60)+(curMin*60)); // Seconds since last minute
         
-        String msg, poster, curDayName, msgDayName, dayNameDisplay; // Defining variables for the content of the message and the poster
+        String msg, poster, curDayName, msgDayName, dayNameDisplay, msgPart1 , msgPart2, curUser; // Defining variables for future usage
         int msgDayNum, trailSpaceCount;
         Boolean daylightSavings, overSevenDays;
         overSevenDays = false;
@@ -66,7 +66,7 @@ public class grp4_Assignment2 {
         
         daylightSavings = false;
         poster = System.getProperty("user.name");
-        msg = "Cats are banned";
+        msg = "This is a message that no one will have any issues with";
         
         // Series of if/else statements to output the day of the week
         if (dayOfWeek == 0) {curDayName = "Thursday";}
@@ -80,6 +80,32 @@ public class grp4_Assignment2 {
         
         if (daylightSavings) {curHour += 1;} // Adding hour if daylight savings is in effects
         
+        msgPart1 = msg.substring(0, (msg.length()/2)); // Splits up message into 2 parts
+        msgPart2 = msg.substring(msg.length()/2);
+        msg = ""; //Making the message empty so the modified one can be added
+        poster = "rayan"; // Poster can be set to anyone for testing purposes
+        curUser = System.getProperty("user.name");
+        if (poster == curUser) {
+            for (int i = 0; i < msgPart1.length(); i++) {
+                char character = msgPart1.charAt(i);
+                msg += Character.toUpperCase(character);
+            }
+            for (int i = 0; i < msgPart2.length(); i++) {
+                char character = msgPart2.charAt(i);
+                msg += Character.toLowerCase(character);
+            }
+        }
+        else {
+            for (int i = 0; i < msgPart1.length(); i++) {
+                char character = msgPart1.charAt(i);
+                msg += Character.toLowerCase(character);
+            }
+            for (int i = 0; i < msgPart2.length(); i++) {
+                char character = msgPart2.charAt(i);
+                msg += Character.toUpperCase(character);
+            }
+        }
+        
         System.out.println("Posted by: " + poster);
         System.out.println(dayNameDisplay);
         if (msg.length() < 40) {
@@ -89,7 +115,8 @@ public class grp4_Assignment2 {
             // Left-align the message
             System.out.println(msg);
         }
-        System.out.printf("Posted at: %02d:%02d:%02d%n%n", (curHour+1), curMin, curSec); // Time output with formatting to add zero if needed
+        System.out.printf("Posted at: %02d:%02d:%02d%n%n", (curHour), curMin, curSec); // Time output with formatting to add zero if needed
+        
 
     }
 }
