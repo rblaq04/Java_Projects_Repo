@@ -93,3 +93,20 @@ public class grp4_Assignment1 {
 
     }
 }
+String msgPart1 , msgPart2, poster;
+        msgPart1 = "cats are banned from ";
+        msgPart2 = "this whatsapp group";
+        poster = System.getProperty("user.name");
+        for (int i = 0; i < msgPart1.length(); i++) {
+            char character = msgPart1.charAt(i);
+            System.out.print(Character.toUpperCase(character));
+        }
+        
+        System.out.print(" ");
+        
+        int index = 0;
+        while (index < msgPart2.length()) {
+            char character = msgPart2.charAt(index);
+            System.out.print(Character.toLowerCase(character));
+            index++;
+        }
