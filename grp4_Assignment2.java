@@ -15,10 +15,11 @@ public class grp4_Assignment1 {
         curSec = (midSecs)-((curHour*60*60)+(curMin*60)); // Seconds since last minute
         
         String msg, poster, curDayName, msgDayName, dayNameDisplay; // Defining variables for the content of the message and the poster
-        int msgDayNum;
+        int msgDayNum, trailSpaceCount;
         Boolean daylightSavings, overSevenDays;
-        overSevenDays = true;
-        msgDayName = "Sunday";
+        overSevenDays = false;
+        msgDayName = "Monday";
+        // Assigning numbers to the days of the week for later usage
         if (msgDayName == "Thursday") {
             msgDayNum = 0;
         }
@@ -40,19 +41,29 @@ public class grp4_Assignment1 {
         else {
             msgDayNum = 6;
         }
-            
+        
+        // Formatting the Day Name Display
         if (overSevenDays) {
-            dayNameDisplay = "                   Some time ago...                   ";
+            dayNameDisplay = "                   Some time ago...";
         }
         else {
-            dayNameDisplay = "";
-            if ((dayOfWeek - msgDayNum) == 1) {
-                dayNameDisplay = "Yesterday";
+            if (dayOfWeek == msgDayNum) {
+                dayNameDisplay = "";
             }
-            if ((dayOfWeek - msgDayNum) > 1) {
-                dayNameDisplay = msgDayName;
+            else if ((dayOfWeek - msgDayNum) == 1) {
+                dayNameDisplay = "                   Yesterday";
+            }
+            else {
+                dayNameDisplay = "                   " + msgDayName;
             }
         }
+        
+        trailSpaceCount = 40 - dayNameDisplay.length();
+        for (int count = trailSpaceCount; count > 0; count -= 1) {
+            dayNameDisplay = dayNameDisplay + " ";
+        }
+        
+        
         daylightSavings = false;
         poster = System.getProperty("user.name");
         msg = "Cats are banned from this WhatsApp group";
@@ -70,8 +81,10 @@ public class grp4_Assignment1 {
         if (daylightSavings) {curHour += 1;} // Adding hour if daylight savings is in effects
         
         System.out.println("Posted by: " + poster);
+        System.out.println(dayNameDisplay);
         System.out.println(msg);
         System.out.printf("Posted at: %02d:%02d:%02d%n%n", (curHour+1), curMin, curSec); // Time output with formatting to add zero if needed
+        
 
     }
 }
