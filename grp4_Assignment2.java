@@ -113,7 +113,7 @@ public class grp4_Assignment2 {
         System.out.println(dayNameDisplay);
         if (msg.length() < 40) {
             // Right-align the message
-            System.out.printf("%115s%n", msg);
+            System.out.printf("%40s%n", msg);
         } else {
             // Left-align the message
             System.out.println(msg);
