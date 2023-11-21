@@ -6,20 +6,37 @@
 
 public class grp4_Assignment2 {
     public static void main(String[] args) {
-        long dayOfWeek,midMins, midSecs, curHour, curMin, curSec;
-        dayOfWeek = (System.currentTimeMillis() / (24*60*60*1000)) % 7;
+        long curDayNum,midMins, midSecs, curHour, curMin, curSec;
+        curDayNum = (System.currentTimeMillis() / (24*60*60*1000)) % 7;
         midMins = (System.currentTimeMillis() % (24*60*60*1000) / 1000) / 60; // Minutes since midnight last night
         midSecs = (System.currentTimeMillis() % (24*60*60*1000) / 1000); // Seconds since midnight last night
         curHour = (midMins/60); // Current hour of the day
         curMin = (midMins)-(curHour*60); // Minutes since last hour
         curSec = (midSecs)-((curHour*60*60)+(curMin*60)); // Seconds since last minute
         
-        String msg, poster, curDayName, msgDayName, dayNameDisplay, msgPart1 , msgPart2, curUser; // Defining variables for future usage
+        // Checking for daylight savings
+        double currentYear, dayOfYear;
+        int leapYears, i;
+        leapYears = 0;
+        i = 1970;
+        currentYear = ((System.currentTimeMillis() / (24*60*60*1000)) / 365) + 1970;
+        while (i <= currentYear) {
+            if (i % 4 == 0) {
+                leapYears +=1;
+            }
+            i+=1;
+        }
+        leapYears -= 1;
+        dayOfYear = (int) ((System.currentTimeMillis() / (24*60*60*1000)) % 365);
+        dayOfYear -= leapYears;
+        if (dayOfYear < 84 && dayOfYear > 303) {curHour += 1;} // Adding hour if daylight savings is in effect
+        
+        String msg, poster, msgDayName, dayNameDisplay, msgPart1 , msgPart2, curUser; // Defining variables for future usage
         int msgDayNum, trailSpaceCount;
-        Boolean daylightSavings, overSevenDays;
-        overSevenDays = false;
+        Boolean overSevenDays;
+        overSevenDays = false; // This boolean can be toggled if the msg was from over 7 days ago
         msgDayName = "Tuesday";
-        // Assigning numbers to the days of the week for later usage
+        // Assigning numbers to the days of the week for use in day name display
         if (msgDayName == "Thursday") {
             msgDayNum = 0;
         }
@@ -47,10 +64,10 @@ public class grp4_Assignment2 {
             dayNameDisplay = "                   Some time ago...";
         }
         else {
-            if (dayOfWeek == msgDayNum) {
+            if (curDayNum == msgDayNum) {
                 dayNameDisplay = "";
             }
-            else if ((dayOfWeek - msgDayNum) == 1) {
+            else if ((curDayNum - msgDayNum) == 1) {
                 dayNameDisplay = "                   Yesterday";
             }
             else {
@@ -63,44 +80,30 @@ public class grp4_Assignment2 {
             dayNameDisplay = dayNameDisplay + " ";
         }
         
-        
-        daylightSavings = false;
-        poster = System.getProperty("user.name");
         msg = "This is a message that no one will have any issues with";
-        
-        // Series of if/else statements to output the day of the week
-        if (dayOfWeek == 0) {curDayName = "Thursday";}
-        else if (dayOfWeek == 1) {curDayName = "Friday";}
-        else if (dayOfWeek == 2) {curDayName = "Saturday";}
-        else if (dayOfWeek == 3) {curDayName = "Sunday";}
-        else if (dayOfWeek == 4) {curDayName = "Monday";}
-        else if (dayOfWeek == 5) {curDayName = "Tuesday";}
-        else {curDayName = "Wednesday";}
-        
-        
-        if (daylightSavings) {curHour += 1;} // Adding hour if daylight savings is in effects
         
         msgPart1 = msg.substring(0, (msg.length()/2)); // Splits up message into 2 parts
         msgPart2 = msg.substring(msg.length()/2);
         msg = ""; //Making the message empty so the modified one can be added
         poster = "rayan"; // Poster can be set to anyone for testing purposes
-        curUser = System.getProperty("user.name");
+        curUser = "" + System.getProperty("user.name");
+        System.out.println(curUser);
         if (poster == curUser) {
-            for (int i = 0; i < msgPart1.length(); i++) {
+            for (i = 0; i < msgPart1.length(); i++) {
                 char character = msgPart1.charAt(i);
                 msg += Character.toUpperCase(character);
             }
-            for (int i = 0; i < msgPart2.length(); i++) {
+            for (i = 0; i < msgPart2.length(); i++) {
                 char character = msgPart2.charAt(i);
                 msg += Character.toLowerCase(character);
             }
         }
         else {
-            for (int i = 0; i < msgPart1.length(); i++) {
+            for (i = 0; i < msgPart1.length(); i++) {
                 char character = msgPart1.charAt(i);
                 msg += Character.toLowerCase(character);
             }
-            for (int i = 0; i < msgPart2.length(); i++) {
+            for (i = 0; i < msgPart2.length(); i++) {
                 char character = msgPart2.charAt(i);
                 msg += Character.toUpperCase(character);
             }
