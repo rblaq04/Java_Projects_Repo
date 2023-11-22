@@ -119,6 +119,14 @@ public class grp4_Assignment2 {
             System.out.println(msg);
         }
         System.out.printf("Posted at: %02d:%02d:%02d%n%n", (curHour), curMin, curSec); // Time output with formatting to add zero if needed
+    // Day Name Display testing
+    // when testing the post for today there was no day output, only the time it was posted at
+
+    // when testing the post for yesterday the word "Yesterday" was printed centered in a 40-character width.
+        
+    // when testing the post for within the last 7 days the specific day was printed and it was centered in a 40-character width.  
+        
+    // when testing the post over 7 days ago the text "Some time ago..." was printed and centered in a 40-character width.
         
 
     }
