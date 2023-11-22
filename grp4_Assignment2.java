@@ -86,9 +86,7 @@ public class grp4_Assignment2 {
         msgPart2 = msg.substring(msg.length()/2);
         msg = ""; //Making the message empty so the modified one can be added
         poster = "rayan"; // Poster can be set to anyone for testing purposes
-        curUser = "" + System.getProperty("user.name");
-        System.out.println(curUser);
-        if (poster == curUser) {
+        if (poster == System.getProperty("user.name")) {
             for (i = 0; i < msgPart1.length(); i++) {
                 char character = msgPart1.charAt(i);
                 msg += Character.toUpperCase(character);
@@ -119,20 +117,37 @@ public class grp4_Assignment2 {
             System.out.println(msg);
         }
         System.out.printf("Posted at: %02d:%02d:%02d%n%n", (curHour), curMin, curSec); // Time output with formatting to add zero if needed
-    // Day Name Display testing
-    // when testing the post for today there was no day output, only the time it was posted at
 
-    // when testing the post for yesterday the word "Yesterday" was printed centered in a 40-character width.
         
-    // when testing the post for within the last 7 days the specific day was printed and it was centered in a 40-character width.  
+        // Day Name Display testing
+        // when testing the post for today there was no day output, only the time it was posted at
+    
+        // when testing the post for yesterday the word "Yesterday" was printed centered in a 40-character width.
+            
+        // when testing the post for within the last 7 days the specific day was printed and it was centered in a 40-character width.  
+            
+        // when testing the post over 7 days ago the text "Some time ago..." was printed and centered in a 40-character width.
         
-    // when testing the post over 7 days ago the text "Some time ago..." was printed and centered in a 40-character width.
-        Message Alignment test
+        //Message Alignment testing
         // when the amount of characters in a text was over 40 it is displayed left-aligned
         
         // when the amount of characters in a text was less than 40 it is displayed right-aligned in a 40-character wide portion of the display line
         
         // we tested this by using different texts some being more than 40 characters and some less than
+
+        //Message Case testing
+        // when the current user was the same as the message poster, the first half of the message was uppercase and second half lowercase
+        
+        // the opposite occured when they were different
+
+        // on some machines java saw the current user and message poster as being different even though they weren't - we're not sure why and couldn't fix this
+
+        //Time Format testing
+        // we tested the time format at multiple times on different machines - the leading zero was added when needed
+
+        // we also added and tested the daylight savings feature - it gave the expected output
+
+        
 
     }
 }
