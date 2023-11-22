@@ -127,7 +127,12 @@ public class grp4_Assignment2 {
     // when testing the post for within the last 7 days the specific day was printed and it was centered in a 40-character width.  
         
     // when testing the post over 7 days ago the text "Some time ago..." was printed and centered in a 40-character width.
+        Message Alignment test
+        // when the amount of characters in a text was over 40 it is displayed left-aligned
         
+        // when the amount of characters in a text was less than 40 it is displayed right-aligned in a 40-character wide portion of the display line
+        
+        // we tested this by using different texts some being more than 40 characters and some less than
 
     }
 }
