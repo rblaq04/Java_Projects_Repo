@@ -1,4 +1,4 @@
-public class TestMessageToolBox {
+public class grp04_TestMessageToolBox {
      public static void main(String[] args) {
          // initialise timeNow to the current time on the system clock
          long timeNow = System.currentTimeMillis();
