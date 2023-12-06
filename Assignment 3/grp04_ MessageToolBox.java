@@ -25,6 +25,25 @@ public class grp04_MessageToolBox {
         String curTime = String.format("%02d:%02d:%02d%n%n", curHour, curMin, curSec);
         return curTime;
     }
+    public static int ageOfPost(long timeInMillis){
+     // Calculate the time difference between the current time and the post time
+    long timeDifference = System.currentTimeMillis() - timeInMillis;
+    
+     // Constants for milliseconds in a day
+    long MILLIS_ONE_DAY = 24 * 60 * 60 * 1000;
+    
+    // Calculate the days difference
+    int daysDifference = (int) timeDifference / (int) MILLIS_ONE_DAY;
+    
+    return daysDifference;
+    }
+
+
+
+
+
+
+
     
     
 }
