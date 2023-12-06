@@ -1,5 +1,6 @@
 public class grp04_MessageToolBox {
     
+    // METHOD 1
     public static String timeOfDayFormatted(long timeInMillis) {
         long curDayNum,midMins, midSecs, curHour, curMin, curSec;
         midMins = (timeInMillis % (24*60*60*1000) / 1000) / 60; // Minutes since midnight last night
@@ -22,28 +23,62 @@ public class grp04_MessageToolBox {
         dayOfYear = (int) ((timeInMillis / (24*60*60*1000)) % 365);
         dayOfYear -= leapYears;
         if (dayOfYear < 84 && dayOfYear > 303) {curHour += 1;} // Adding hour if daylight savings is in effect
-        String curTime = String.format("%02d:%02d:%02d%n%n", curHour, curMin, curSec);
+        String curTime = String.format("%02d:%02d:%02d%n%n", curHour, curMin, curSec); // Formatting time to add zero if needed
         return curTime;
     }
-    public static int ageOfPost(long timeInMillis){
-     // Calculate the time difference between the current time and the post time
-    long timeDifference = System.currentTimeMillis() - timeInMillis;
     
-     // Constants for milliseconds in a day
-    long MILLIS_ONE_DAY = 24 * 60 * 60 * 1000;
-    
-    // Calculate the days difference
-    int daysDifference = (int) timeDifference / (int) MILLIS_ONE_DAY;
-    
-    return daysDifference;
+    //METHOD 2
+    public static String dayName(long timeInMillis) {
+        long dayOfWeek = (timeInMillis / (24*60*60*1000)) % 7;
+        String nameOfDay;
+        if (dayOfWeek == 0) {nameOfDay = "Thursday";}
+        else if (dayOfWeek == 1) {nameOfDay = "Friday";}
+        else if (dayOfWeek == 2) {nameOfDay = "Saturday";}
+        else if (dayOfWeek == 3) {nameOfDay = "Sunday";}
+        else if (dayOfWeek == 4) {nameOfDay = "Monday";}
+        else if (dayOfWeek == 5) {nameOfDay = "Tuesday";}
+        else {nameOfDay = "Wednesday";}
+        return nameOfDay;
     }
-
-
-
-
-
-
-
+    
+    // METHOD 3
+    public static int ageOfPost(long timeInMillis) {
+        // Calculate the time difference between the current time and the post time
+        long timeDifference = System.currentTimeMillis() - timeInMillis;
+        
+        // Constants for milliseconds in a day
+        long MILLIS_ONE_DAY = 24 * 60 * 60 * 1000;
+        
+        // Calculate the days difference
+        int daysDifference = (int) timeDifference / (int) MILLIS_ONE_DAY;
+        
+        return daysDifference;
+    }
+    
+    // METHOD 4
+    public static String centre(String messageText, int width) {
+        String msg = "";
+        // First 2 if conditions in assignment description don't need to be coded as seperate conditions
+        if (messageText == "") {
+            // Producing spaces equal to a given width if message is empty
+            for(int i=0; i<width; i++) {
+                msg += " ";
+            }
+        }
+        else {
+            // Centering the message in a given width
+            int spaces = (width - messageText.length())/2; 
+            for(int i=0; i<spaces; i++) {
+                msg += " ";
+            }
+            msg += messageText;
+            for(int i=0; i<spaces; i++) {
+                msg += " ";
+            }
+        }
+        
+        return msg;
+    }
     
     
 }
