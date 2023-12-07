@@ -91,23 +91,25 @@ public class grp04_MessageToolBox {
         else if (textLength > 80) {
             width = 80;
             required = textLength / width;
-            if (textLength % width == 0) {
+            if (textLength % width != 0) {
                 required++;
             }
             for (int i = 0; i < required; i++) {
                 int startPos = i*width;
                 int endPos = (i+1)*width;
+                if (endPos > textLength) {endPos = textLength;}
                 System.out.println(messageText.substring(startPos, endPos));
             }
         }
         else {
             required = textLength / width;
-            if (textLength % width == 0) {
+            if (textLength % width != 0) {
                 required++;
             }
             for (int i = 0; i < required; i++) {
                 int startPos = i*width;
                 int endPos = (i+1)*width;
+                if (endPos > textLength) {endPos = textLength;}
                 System.out.println(messageText.substring(startPos, endPos));
             }
         }
