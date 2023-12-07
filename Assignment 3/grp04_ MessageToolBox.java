@@ -80,5 +80,37 @@ public class grp04_MessageToolBox {
         return msg;
     }
     
+    // METHOD 5
+    public static void display(String messageText, int width) {
+        int textLength = messageText.length();
+        int required = 0;
+        if (textLength < 10) {
+            width = 10;
+            System.out.println(messageText);
+        }
+        else if (textLength > 80) {
+            width = 80;
+            required = textLength / width;
+            if (textLength % width == 0) {
+                required++;
+            }
+            for (int i = 0; i < required; i++) {
+                int startPos = i*width;
+                int endPos = (i+1)*width;
+                System.out.println(messageText.substring(startPos, endPos));
+            }
+        }
+        else {
+            required = textLength / width;
+            if (textLength % width == 0) {
+                required++;
+            }
+            for (int i = 0; i < required; i++) {
+                int startPos = i*width;
+                int endPos = (i+1)*width;
+                System.out.println(messageText.substring(startPos, endPos));
+            }
+        }
+    }
     
 }
