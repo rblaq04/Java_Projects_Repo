@@ -58,11 +58,13 @@ public class grp04_MessageToolBox {
     // METHOD 4
     public static String centre(String messageText, int width) {
         String msg = "";
-        // First 2 if conditions in assignment description don't need to be coded as seperate conditions
-        if (messageText == "") {
+        if (width <= 0 || width < messageText.length()) {
+            msg = "";
+        }
+        else if (messageText == "") {
             // Producing spaces equal to a given width if message is empty
             for(int i=0; i<width; i++) {
-                msg += " ";
+                msg += "-";
             }
         }
         else {
